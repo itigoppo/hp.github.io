@@ -15,17 +15,19 @@ $(document).ready(function () {
     var column_number_enrollment = 8;
     var column_number_enrollment_day = 9;
     var column_number_unit = 10;
-    var column_number_unit_graduate_date = 11;
-    var column_number_unit_graduate_age = 12;
-    var column_number_unit_enrollment = 13;
-    var column_number_unit_enrollment_day = 14;
-    var column_number_concurrent_unit = 15;
-    var column_number_concurrent_join_date = 16;
-    var column_number_concurrent_join_age = 17;
-    var column_number_concurrent_graduate_date = 18;
-    var column_number_concurrent_graduate_age = 18;
-    var column_number_concurrent_enrollment = 19;
-    var column_number_concurrent_enrollment_day = 20;
+    var column_number_unit_join_date = 11;
+    var column_number_unit_join_age = 12;
+    var column_number_unit_graduate_date = 13;
+    var column_number_unit_graduate_age = 14;
+    var column_number_unit_enrollment = 15;
+    var column_number_unit_enrollment_day = 16;
+    var column_number_concurrent_unit = 17;
+    var column_number_concurrent_join_date = 18;
+    var column_number_concurrent_join_age = 19;
+    var column_number_concurrent_graduate_date = 20;
+    var column_number_concurrent_graduate_age = 21;
+    var column_number_concurrent_enrollment = 22;
+    var column_number_concurrent_enrollment_day = 23;
 
     $('#member tbody tr').each(function (index, element) {
         // テーブルのデータ取得
@@ -33,6 +35,7 @@ $(document).ready(function () {
         var input_join = $(element).children('td:nth-child(' + column_number_join_date + ')').text();
         var input_graduate = $(element).children('td:nth-child(' + column_number_graduate_date + ')').text();
         var input_unit = $(element).children('td:nth-child(' + column_number_unit + ')').text();
+        var input_unit_join = $(element).children('td:nth-child(' + column_number_unit_join_date + ')').text();
         var input_unit_graduate = $(element).children('td:nth-child(' + column_number_unit_graduate_date + ')').text();
         var input_concurrent_join = $(element).children('td:nth-child(' + column_number_concurrent_join_date + ')').text();
         var input_concurrent_graduate = $(element).children('td:nth-child(' + column_number_concurrent_graduate_date + ')').text();
@@ -56,6 +59,18 @@ $(document).ready(function () {
         var join_day = join_date.getDate();
         var join_string = zeroPadding(join_year, 4) + zeroPadding(join_month, 2) + zeroPadding(join_day, 2);
 
+        var unit_join_date = today;
+        if (input_unit_join.indexOf('dd') !== -1) {
+            var unit_join_day_unknown = input_unit_join.split('/');
+            unit_join_date = new Date(Number(unit_join_day_unknown[0]), Number(unit_join_day_unknown[1]) + 1, 0);
+        } else if(input_unit_join) {
+            unit_join_date = new Date(input_unit_join);
+        }
+        var unit_join_year = unit_join_date.getFullYear();
+        var unit_join_month = unit_join_date.getMonth() + 1;
+        var unit_join_day = unit_join_date.getDate();
+        var unit_join_string = zeroPadding(unit_join_year, 4) + zeroPadding(unit_join_month, 2) + zeroPadding(unit_join_day, 2);
+
         var unit_graduate_date = today;
         if (input_unit_graduate.indexOf('dd') !== -1) {
             var unit_graduate_day_unknown = input_unit_graduate.split('/');
@@ -69,7 +84,10 @@ $(document).ready(function () {
         var unit_graduate_string = zeroPadding(unit_graduate_year, 4) + zeroPadding(unit_graduate_month, 2) + zeroPadding(unit_graduate_day, 2);
 
         var concurrent_join_date = today;
-        if (input_concurrent_join) {
+        if (input_concurrent_join.indexOf('dd') !== -1) {
+            var concurrent_join_day_unknown = input_concurrent_join.split('/');
+            concurrent_join_date = new Date(Number(concurrent_join_day_unknown[0]), Number(concurrent_join_day_unknown[1]) + 1, 0);
+        } else if (input_concurrent_join) {
             concurrent_join_date = new Date(input_concurrent_join);
         }
         var concurrent_join_year = concurrent_join_date.getFullYear();
@@ -78,7 +96,10 @@ $(document).ready(function () {
         var concurrent_join_string = zeroPadding(concurrent_join_year, 4) + zeroPadding(concurrent_join_month, 2) + zeroPadding(concurrent_join_day, 2);
 
         var concurrent_graduate_date = today;
-        if (input_concurrent_graduate) {
+        if (input_concurrent_graduate.indexOf('dd') !== -1) {
+            var concurrent_graduate_day_unknown = input_concurrent_graduate.split('/');
+            concurrent_graduate_date = new Date(Number(concurrent_graduate_day_unknown[0]), Number(concurrent_graduate_day_unknown[1]) + 1, 0);
+        } else if (input_concurrent_graduate) {
             concurrent_graduate_date = new Date(input_concurrent_graduate);
         }
         var concurrent_graduate_year = concurrent_graduate_date.getFullYear();
@@ -119,6 +140,12 @@ $(document).ready(function () {
         var graduate_diff = graduate_date.getTime() - join_date.getTime();
         var enrollment_day = Math.floor(graduate_diff / 1000 / 60 / 60 / 24);
         $(element).children('td:nth-child(' + column_number_enrollment_day + ')').text(enrollment_day);
+
+        // ユニット加入時年齢
+        if (input_unit_join) {
+            var unit_join_age = Math.floor((Number(unit_join_string) - Number(birth_string)) / 10000);
+            $(element).children('td:nth-child(' + column_number_unit_join_age + ')').text(unit_join_age);
+        }
 
         // ユニット卒業時年齢
         if (input_unit_graduate) {
