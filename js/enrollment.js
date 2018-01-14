@@ -133,7 +133,7 @@ $(document).ready(function () {
             $(element).children('td:nth-child(' + column_number_graduate_age + ')').text(graduate_age);
         } else {
             $(element).addClass('bg-success');
-            $(element).hide();
+            // $(element).hide();
         }
 
         // H!P在籍期間
