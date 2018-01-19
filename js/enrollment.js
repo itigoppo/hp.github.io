@@ -137,6 +137,18 @@ $(document).ready(function () {
         }
 
         // H!P在籍期間
+        var enrollment_month = (graduate_year * 12 + (graduate_month - 1)) - (join_year * 12 + (join_month - 1));
+        // if()
+        //http://aok.blue.coocan.jp/html5/jscript/datediff.html
+        var test = new Date(join_year, join_month, 0).getDate();
+        var join_month2 = (join_month - 1) + enrollment_month;
+        var join_year2 = join_year + (join_month2 / 12);
+        var join_month3 = join_month2 % 12;
+        var test2 = new Date(join_year2, join_month3 + 1, 0).getDate();
+        var test3 = join_date;
+        test3.setFullYear(join_year2, join_month3, (join_day === test || join_day > test2 ? test2 : join_day));
+
+        // H!P在籍日数
         var graduate_diff = graduate_date.getTime() - join_date.getTime();
         var enrollment_day = Math.floor(graduate_diff / 1000 / 60 / 60 / 24);
         $(element).children('td:nth-child(' + column_number_enrollment_day + ')').text(enrollment_day);
@@ -186,3 +198,4 @@ $(document).ready(function () {
 function zeroPadding(num, length) {
     return ('000' + num).slice(-length);
 }
+
