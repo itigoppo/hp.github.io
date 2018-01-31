@@ -10,13 +10,13 @@ $(function() {
     var column_number_graduate_age = 6;
     var column_number_enrollment = 7;
     var column_number_enrollment_day = 8;
-    var column_number_unit = 3;
-    var column_number_unit_join_date = 4;
-    var column_number_unit_join_age = 5;
-    var column_number_unit_graduate_date = 6;
-    var column_number_unit_graduate_age = 7;
-    var column_number_unit_enrollment = 8;
-    var column_number_unit_enrollment_day = 9;
+    var column_number_unit = 1;
+    var column_number_unit_join_date = 2;
+    var column_number_unit_join_age = 3;
+    var column_number_unit_graduate_date = 4;
+    var column_number_unit_graduate_age = 5;
+    var column_number_unit_enrollment = 6;
+    var column_number_unit_enrollment_day = 7;
 
     $.getJSON("./js/member.json", function(data) {
         var count = 0 ;
@@ -30,9 +30,8 @@ $(function() {
                 hp_member[column_number_graduate_date] = this.graduate_date;
             }
 
-            var unit_member = new Array(10);
+            var unit_member = new Array(8);
             unit_member[column_number_name] = this.member_name;
-            unit_member[column_number_birth_date] = this.birth_date;
             unit_member[column_number_unit] = this.unit;
             unit_member[column_number_unit_join_date] = this.unit_join_date;
             if (typeof this.unit_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
@@ -40,9 +39,8 @@ $(function() {
             }
             unit_member[column_number_unit_graduate_date] = this.unit_graduate_date;
 
-            var concurrent_unit_member = new Array(10);
+            var concurrent_unit_member = new Array(8);
             concurrent_unit_member[column_number_name] = this.member_name;
-            concurrent_unit_member[column_number_birth_date] = this.birth_date;
             concurrent_unit_member[column_number_unit] = this.concurrent_unit;
             concurrent_unit_member[column_number_unit_join_date] = this.concurrent_join_date;
             if (typeof this.concurrent_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
@@ -114,8 +112,6 @@ $(function() {
             // 年齢
             var age = calAge(birth_date, today);
             hp_member[column_number_age] = age;
-            unit_member[column_number_age] = age;
-            concurrent_unit_member[column_number_age] = age;
 
             // H!P加入時年齢
             var join_age = calAge(birth_date, join_date);
