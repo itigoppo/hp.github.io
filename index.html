@@ -27,12 +27,15 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 
     <h1>ハロプロ在籍日数一覧</h1>
 
     <div class="alert alert-info" role="alert">
-        日付不明は該当月の月末として処理しています。
+        <ul>
+            <li>日付不明は該当月の月末として処理しています。</li>
+            <li>ユニット自体継続していてもH!Pを辞めている場合H!P卒業日をユニット卒業日にしています。</li>
+        </ul>
     </div>
 
     <ul class="nav nav-tabs">
@@ -46,7 +49,7 @@
 
     <div class="tab-content">
         <div id="tab-hp" class="tab-pane active">
-            <table id="list-hp" class="table table-light table-bordered table-striped table-sm">
+            <table id="list-hp" class="table table-light table-bordered table-striped table-sm table-responsive-sm">
                 <colgroup span="1" class="member_name">
                 <colgroup span="1" class="birth_date">
                 <colgroup span="1" class="age">

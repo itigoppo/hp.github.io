@@ -35,6 +35,9 @@ $(function() {
             unit_member[column_number_birth_date] = this.birth_date;
             unit_member[column_number_unit] = this.unit;
             unit_member[column_number_unit_join_date] = this.unit_join_date;
+            if (typeof this.unit_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
+                this.unit_graduate_date = this.graduate_date;
+            }
             unit_member[column_number_unit_graduate_date] = this.unit_graduate_date;
 
             var concurrent_unit_member = new Array(10);
@@ -42,6 +45,9 @@ $(function() {
             concurrent_unit_member[column_number_birth_date] = this.birth_date;
             concurrent_unit_member[column_number_unit] = this.concurrent_unit;
             concurrent_unit_member[column_number_unit_join_date] = this.concurrent_join_date;
+            if (typeof this.concurrent_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
+                this.concurrent_graduate_date = this.graduate_date;
+            }
             concurrent_unit_member[column_number_unit_graduate_date] = this.concurrent_graduate_date;
 
             // 日付をDate型に
