@@ -32,7 +32,11 @@ $(function() {
 
             var unit_member = new Array(8);
             unit_member[column_number_name] = this.member_name;
-            unit_member[column_number_unit] = this.unit;
+            if (typeof this.unit === "object") {
+                unit_member[column_number_unit] = this.unit.join('<br/>');
+            } else {
+                unit_member[column_number_unit] = this.unit;
+            }
             unit_member[column_number_unit_join_date] = this.unit_join_date;
             if (typeof this.unit_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
                 this.unit_graduate_date = this.graduate_date;
@@ -41,7 +45,11 @@ $(function() {
 
             var concurrent_unit_member = new Array(8);
             concurrent_unit_member[column_number_name] = this.member_name;
-            concurrent_unit_member[column_number_unit] = this.concurrent_unit;
+            if (typeof this.concurrent_unit === "object") {
+                concurrent_unit_member[column_number_unit] = this.concurrent_unit.join('<br/>');
+            } else {
+                concurrent_unit_member[column_number_unit] = this.concurrent_unit;
+            }
             concurrent_unit_member[column_number_unit_join_date] = this.concurrent_join_date;
             if (typeof this.concurrent_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
                 this.concurrent_graduate_date = this.graduate_date;
