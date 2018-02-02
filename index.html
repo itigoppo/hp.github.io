@@ -59,6 +59,22 @@
 
     <div class="tab-content">
         <div id="tab-hp" class="tab-pane active">
+
+            <div id="search-hp" class="form-group">
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="status" id="hp_status_all" value="all" checked>
+                        歴代表示
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="status" id="hp_status_active" value="active">
+                        現役のみにする
+                    </label>
+                </div>
+            </div>
+
             <table id="list-hp" class="table table-light table-bordered table-striped table-sm table-responsive-sm">
                 <colgroup span="1" class="member_name">
                 <colgroup span="1" class="birth_date">
@@ -113,6 +129,148 @@
         </div>
 
         <div id="tab-unit" class="tab-pane">
+
+            <div id="search-unit" class="form-group">
+                <div id="unit_status">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="status" id="unit_status_all" value="all" checked>
+                            歴代表示
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="status" id="unit_status_active" value="active">
+                            現役のみにする
+                        </label>
+                    </div>
+                </div>
+
+                <div id="unit_list">
+                    ユニットを選択する：<br/>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="モーニング娘。">
+                            モーニング娘。
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="T&Cボンバー">
+                            T&Cボンバー
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="カントリー・ガールズ">
+                            カントリー・ガールズ
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="ココナッツ娘。">
+                            ココナッツ娘。
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="メロン記念日">
+                            メロン記念日
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="シェキドル">
+                            シェキドル
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="美勇伝">
+                            美勇伝
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="Berryz工房">
+                            Berryz工房
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="℃-ute">
+                            ℃-ute
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="チャオ ベッラ チンクエッティ">
+                            チャオ ベッラ チンクエッティ
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="音楽ガッタス">
+                            音楽ガッタス
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="MilkyWay">
+                            MilkyWay
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="SI☆NA">
+                            SI☆NA
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="しゅごキャラエッグ！">
+                            しゅごキャラエッグ！
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="アイスクリー娘。">
+                            アイスクリー娘。
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="大小姐">
+                            大小姐
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="アンジュルム">
+                            アンジュルム
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="Juice=Juice">
+                            Juice=Juice
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="こぶしファクトリー">
+                            こぶしファクトリー
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="units[]" value="つばきファクトリー">
+                            つばきファクトリー
+                        </label>
+                    </div>
+                </div>
+            </div>
+
             <table id="list-unit" class="table table-light table-bordered table-striped table-sm table-responsive-sm">
                 <colgroup span="1" class="member_name">
                 <colgroup span="1" id="unit">

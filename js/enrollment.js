@@ -1,4 +1,72 @@
-$(function() {
+var is_hp_active_only = false;
+var is_unit_active_only = false;
+var select_units = [];
+$(function () {
+    load_hp_member();
+    load_unit_member();
+    load_unit();
+
+    $('#search-hp').find('input[name="status"]:radio').change(function () {
+        if ($(this).val() === 'active') {
+            is_hp_active_only = true;
+        } else {
+            is_hp_active_only = false;
+        }
+        load_hp_member();
+    });
+
+    var search_unit = $('#search-unit');
+    search_unit.find('input[name="status"]:radio').change(function () {
+        if ($(this).val() === 'active') {
+            is_unit_active_only = true;
+        } else {
+            is_unit_active_only = false;
+        }
+        load_unit_member();
+    });
+
+    search_unit.find('input[name="units[]"]').change(function () {
+        select_units = [];
+        search_unit.find('input[name="units[]"]:checked').each(function () {
+            select_units.push($(this).val());
+        });
+        load_unit_member();
+    });
+
+    var table_hp = $("#list-hp").stupidtable();
+    table_hp.bind('aftertablesort', function (event, data) {
+        // data.column - the index of the column sorted after a click
+        // data.direction - the sorting direction (either asc or desc)
+        // data.$th - the th element (in jQuery wrapper)
+        // $(this) - this table object
+    });
+
+    var table_unit = $("#list-unit").stupidtable();
+    table_unit.bind('aftertablesort', function (event, data) {
+        // data.column - the index of the column sorted after a click
+        // data.direction - the sorting direction (either asc or desc)
+        // data.$th - the th element (in jQuery wrapper)
+        // $(this) - this table object
+    });
+
+});
+
+function load_unit() {
+    var units = [];
+    $.getJSON("./js/unit.json", function(data) {
+        $(data.unit).each(function () {
+
+        })
+    });
+}
+
+/**
+ * メンバー読み込み(全体)
+ */
+function load_hp_member() {
+    var list = $("#list-hp");
+    list.find("tbody tr").remove();
+
     var today = new Date();
 
     var column_number_name = 0;
@@ -10,17 +78,14 @@ $(function() {
     var column_number_graduate_age = 6;
     var column_number_enrollment = 7;
     var column_number_enrollment_day = 8;
-    var column_number_unit = 1;
-    var column_number_unit_join_date = 2;
-    var column_number_unit_join_age = 3;
-    var column_number_unit_graduate_date = 4;
-    var column_number_unit_graduate_age = 5;
-    var column_number_unit_enrollment = 6;
-    var column_number_unit_enrollment_day = 7;
 
-    $.getJSON("./js/member.json", function(data) {
-        var count = 0 ;
-        $(data.member).each(function() {
+    $.getJSON("./js/member.json", function (data) {
+        var count = 0;
+        $(data.member).each(function () {
+            if (typeof this.graduate_date !== "undefined" && is_hp_active_only === true) {
+                return true;
+            }
+
             // 表示用配列作成
             var hp_member = new Array(9);
             hp_member[column_number_name] = this.member_name;
@@ -29,32 +94,6 @@ $(function() {
             if (typeof this.graduate_date !== "undefined") {
                 hp_member[column_number_graduate_date] = this.graduate_date;
             }
-
-            var unit_member = new Array(8);
-            unit_member[column_number_name] = this.member_name;
-            if (typeof this.unit === "object") {
-                unit_member[column_number_unit] = this.unit.join('<br/>');
-            } else {
-                unit_member[column_number_unit] = this.unit;
-            }
-            unit_member[column_number_unit_join_date] = this.unit_join_date;
-            if (typeof this.unit_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
-                this.unit_graduate_date = this.graduate_date;
-            }
-            unit_member[column_number_unit_graduate_date] = this.unit_graduate_date;
-
-            var concurrent_unit_member = new Array(8);
-            concurrent_unit_member[column_number_name] = this.member_name;
-            if (typeof this.concurrent_unit === "object") {
-                concurrent_unit_member[column_number_unit] = this.concurrent_unit.join('<br/>');
-            } else {
-                concurrent_unit_member[column_number_unit] = this.concurrent_unit;
-            }
-            concurrent_unit_member[column_number_unit_join_date] = this.concurrent_join_date;
-            if (typeof this.concurrent_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
-                this.concurrent_graduate_date = this.graduate_date;
-            }
-            concurrent_unit_member[column_number_unit_graduate_date] = this.concurrent_graduate_date;
 
             // 日付をDate型に
             var birth_date = new Date(this.birth_date);
@@ -76,6 +115,112 @@ $(function() {
                     graduate_date = new Date(this.graduate_date);
                 }
             }
+
+            // 年齢
+            var age = calAge(birth_date, today);
+            hp_member[column_number_age] = age;
+
+            // H!P加入時年齢
+            var join_age = calAge(birth_date, join_date);
+            hp_member[column_number_join_age] = join_age;
+
+            // H!P卒業時年齢
+            if (typeof this.graduate_date !== "undefined") {
+                var graduate_age = calAge(birth_date, graduate_date);
+                hp_member[column_number_graduate_age] = graduate_age;
+            }
+
+            // H!P在籍期間
+            var enrollment_year = diffYear(join_date, graduate_date);
+            var enrollment_diff_month = diffMonth(join_date, graduate_date);
+            var enrollment_month = enrollment_diff_month % 12;
+            var enrollment_day = diffDay(addMonth(join_date, enrollment_diff_month), graduate_date);
+            hp_member[column_number_enrollment] = enrollment_year + '年' + enrollment_month + 'ヶ月' + enrollment_day + '日';
+
+            // H!P在籍日数
+            hp_member[column_number_enrollment_day] = diffDay(join_date, graduate_date);
+
+            // 表示
+            list.append("<tr id=\"member-hp" + count + "\"></tr>");
+            if (typeof this.graduate_date === "undefined" && is_hp_active_only === false) {
+                list.find("#member-hp" + count).addClass('bg-success');
+            }
+
+            for (var cnt1 = 0; cnt1 < hp_member.length; cnt1++) {
+                if (typeof hp_member[cnt1] !== "undefined") {
+                    list.find("#member-hp" + count).append("<td>" + hp_member[cnt1] + "</td>");
+                } else {
+                    list.find("#member-hp" + count).append("<td></td>");
+                }
+            }
+            count++;
+        })
+    });
+}
+
+/**
+ * メンバー読み込み(ユニット)
+ */
+function load_unit_member() {
+    var list = $("#list-unit");
+    list.find("tbody tr").remove();
+
+    var today = new Date();
+
+    var column_number_name = 0;
+    var column_number_unit = 1;
+    var column_number_unit_join_date = 2;
+    var column_number_unit_join_age = 3;
+    var column_number_unit_graduate_date = 4;
+    var column_number_unit_graduate_age = 5;
+    var column_number_unit_enrollment = 6;
+    var column_number_unit_enrollment_day = 7;
+
+    $.getJSON("./js/member.json", function (data) {
+        var count = 0;
+        $(data.member).each(function () {
+            // H!Pを卒業していたらユニットが継続中でも卒業
+            if (typeof this.unit_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
+                this.unit_graduate_date = this.graduate_date;
+            }
+            if (typeof this.concurrent_graduate_date === "undefined" && typeof this.graduate_date !== "undefined") {
+                this.concurrent_graduate_date = this.graduate_date;
+            }
+            if (typeof this.unit_graduate_date !== "undefined" && typeof this.concurrent_graduate_date !== "undefined" && is_unit_active_only === true) {
+                return true;
+            }
+            var unit_skip = false;
+            if (typeof this.unit_graduate_date !== "undefined" && is_unit_active_only === true) {
+                unit_skip = true;
+            }
+            var concurrent_skip = false;
+            if (typeof this.concurrent_graduate_date !== "undefined" && is_unit_active_only === true) {
+                concurrent_skip = true;
+            }
+
+            // 表示用配列作成
+            var unit_member = new Array(8);
+            unit_member[column_number_name] = this.member_name;
+            if (typeof this.unit === "object") {
+                unit_member[column_number_unit] = this.unit.join('<br/>');
+            } else {
+                unit_member[column_number_unit] = this.unit;
+            }
+            unit_member[column_number_unit_join_date] = this.unit_join_date;
+            unit_member[column_number_unit_graduate_date] = this.unit_graduate_date;
+
+            var concurrent_unit_member = new Array(8);
+            concurrent_unit_member[column_number_name] = this.member_name;
+            if (typeof this.concurrent_unit === "object") {
+                concurrent_unit_member[column_number_unit] = this.concurrent_unit.join('<br/>');
+            } else {
+                concurrent_unit_member[column_number_unit] = this.concurrent_unit;
+            }
+            concurrent_unit_member[column_number_unit_join_date] = this.concurrent_join_date;
+            concurrent_unit_member[column_number_unit_graduate_date] = this.concurrent_graduate_date;
+
+            // 日付をDate型に
+            var birth_date = new Date(this.birth_date);
 
             var unit_join_date = today;
             if (typeof this.unit_join_date !== "undefined") {
@@ -116,30 +261,6 @@ $(function() {
                     concurrent_graduate_date = new Date(this.concurrent_graduate_date);
                 }
             }
-
-            // 年齢
-            var age = calAge(birth_date, today);
-            hp_member[column_number_age] = age;
-
-            // H!P加入時年齢
-            var join_age = calAge(birth_date, join_date);
-            hp_member[column_number_join_age] = join_age;
-
-            // H!P卒業時年齢
-            if (typeof this.graduate_date !== "undefined") {
-                var graduate_age = calAge(birth_date, graduate_date);
-                hp_member[column_number_graduate_age] = graduate_age;
-            }
-
-            // H!P在籍期間
-            var enrollment_year = diffYear(join_date, graduate_date);
-            var enrollment_diff_month = diffMonth(join_date, graduate_date);
-            var enrollment_month = enrollment_diff_month % 12;
-            var enrollment_day = diffDay(addMonth(join_date, enrollment_diff_month), graduate_date);
-            hp_member[column_number_enrollment] = enrollment_year + '年' + enrollment_month + 'ヶ月' + enrollment_day + '日';
-
-            // H!P在籍日数
-            hp_member[column_number_enrollment_day] = diffDay(join_date, graduate_date);
 
             // ユニット加入時年齢
             if (typeof this.unit_join_date !== "undefined") {
@@ -190,72 +311,40 @@ $(function() {
             }
 
             // 表示
-            var hp = $("#list-hp");
-            hp.append("<tr id=\"member-hp" + count + "\"></tr>");
-            if (typeof this.graduate_date === "undefined") {
-                hp.find("#member-hp" + count).addClass('bg-success');
-            }
-
-            for(var cnt1 = 0; cnt1 < hp_member.length; cnt1++) {
-                if (typeof hp_member[cnt1] !== "undefined") {
-                    hp.find("#member-hp" + count).append("<td>" + hp_member[cnt1] + "</td>");
-                } else {
-                    hp.find("#member-hp" + count).append("<td></td>");
-                }
-            }
-
-            var unit = $("#list-unit");
-            if (typeof this.unit !== "undefined") {
-                unit.append("<tr id=\"member-unit" + count + "\"></tr>");
-                if (typeof this.unit_graduate_date === "undefined") {
-                    unit.find("#member-unit" + count).addClass('bg-success');
+            if (typeof this.unit !== "undefined" && unit_skip === false) {
+                list.append("<tr id=\"member-unit" + count + "\"></tr>");
+                if (typeof this.unit_graduate_date === "undefined" && is_unit_active_only === false) {
+                    list.find("#member-unit" + count).addClass('bg-success');
                 }
 
-                for(var cnt2 = 0; cnt2 < unit_member.length; cnt2++) {
+                for (var cnt2 = 0; cnt2 < unit_member.length; cnt2++) {
                     if (typeof unit_member[cnt2] !== "undefined") {
-                        unit.find("#member-unit" + count).append("<td>" + unit_member[cnt2] + "</td>");
+                        list.find("#member-unit" + count).append("<td>" + unit_member[cnt2] + "</td>");
                     } else {
-                        unit.find("#member-unit" + count).append("<td></td>");
+                        list.find("#member-unit" + count).append("<td></td>");
                     }
                 }
             }
-            if (typeof this.concurrent_unit !== "undefined") {
-                unit.append("<tr id=\"member-concurrent" + count + "\"></tr>");
+            if (typeof this.concurrent_unit !== "undefined" && concurrent_skip === false) {
+                list.append("<tr id=\"member-concurrent" + count + "\"></tr>");
 
-                if (typeof this.concurrent_graduate_date === "undefined") {
-                    unit.find("#member-concurrent" + count).addClass('bg-success');
+                if (typeof this.concurrent_graduate_date === "undefined" && is_unit_active_only === false) {
+                    list.find("#member-concurrent" + count).addClass('bg-success');
                 }
 
-                for(var cnt3 = 0; cnt3 < concurrent_unit_member.length; cnt3++) {
+                for (var cnt3 = 0; cnt3 < concurrent_unit_member.length; cnt3++) {
                     if (typeof concurrent_unit_member[cnt3] !== "undefined") {
-                        unit.find("#member-concurrent" + count).append("<td>" + concurrent_unit_member[cnt3] + "</td>");
+                        list.find("#member-concurrent" + count).append("<td>" + concurrent_unit_member[cnt3] + "</td>");
                     } else {
-                        unit.find("#member-concurrent" + count).append("<td></td>");
+                        list.find("#member-concurrent" + count).append("<td></td>");
                     }
                 }
             }
 
-            count++ ;
+            count++;
         })
     });
-
-    var table_hp = $("#list-hp").stupidtable();
-    table_hp.bind('aftertablesort', function (event, data) {
-        // data.column - the index of the column sorted after a click
-        // data.direction - the sorting direction (either asc or desc)
-        // data.$th - the th element (in jQuery wrapper)
-        // $(this) - this table object
-    });
-
-    var table_unit = $("#list-unit").stupidtable();
-    table_unit.bind('aftertablesort', function (event, data) {
-        // data.column - the index of the column sorted after a click
-        // data.direction - the sorting direction (either asc or desc)
-        // data.$th - the th element (in jQuery wrapper)
-        // $(this) - this table object
-    });
-
-});
+}
 
 /**
  * 0埋め
@@ -264,8 +353,7 @@ $(function() {
  * @param length
  * @returns {string}
  */
-function zeroPadding(num, length)
-{
+function zeroPadding(num, length) {
     return ('000' + num).slice(-length);
 }
 
@@ -276,8 +364,7 @@ function zeroPadding(num, length)
  * @param base_date
  * @returns {number}
  */
-function calAge(birth_date, base_date)
-{
+function calAge(birth_date, base_date) {
     var birth_year = birth_date.getFullYear();
     var birth_month = birth_date.getMonth() + 1;
     var birth_day = birth_date.getDate();
@@ -298,8 +385,7 @@ function calAge(birth_date, base_date)
  * @param end_date
  * @returns {number}
  */
-function diffDay(start_date, end_date)
-{
+function diffDay(start_date, end_date) {
     var diff = end_date.getTime() - start_date.getTime();
     return Math.floor(diff / 1000 / 60 / 60 / 24);
 }
@@ -311,8 +397,7 @@ function diffDay(start_date, end_date)
  * @param end_date
  * @returns {number}
  */
-function diffMonth(start_date, end_date)
-{
+function diffMonth(start_date, end_date) {
     var start_year = start_date.getFullYear();
     var start_month = start_date.getMonth();
 
@@ -322,7 +407,7 @@ function diffMonth(start_date, end_date)
     var result = (end_year * 12 + end_month) - (start_year * 12 + start_month);
     var result_month = addMonth(start_date, result);
 
-    if(diffDay(result_month, end_date) < 0) --result;
+    if (diffDay(result_month, end_date) < 0) --result;
 
     return result;
 }
@@ -334,8 +419,7 @@ function diffMonth(start_date, end_date)
  * @param end_date
  * @returns {number}
  */
-function diffYear(start_date, end_date)
-{
+function diffYear(start_date, end_date) {
     return parseInt(diffMonth(start_date, end_date) / 12);
 }
 
@@ -346,8 +430,7 @@ function diffYear(start_date, end_date)
  * @param add_day
  * @returns {Date}
  */
-function addDay(base_date, add_day)
-{
+function addDay(base_date, add_day) {
     var base_year = base_date.getFullYear();
     var base_month = base_date.getMonth();
     var base_day = base_date.getDate();
@@ -365,8 +448,7 @@ function addDay(base_date, add_day)
  * @param add_month
  * @returns {Date}
  */
-function addMonth(base_date, add_month)
-{
+function addMonth(base_date, add_month) {
     var base_year = base_date.getFullYear();
     var base_month = base_date.getMonth();
     var base_day = base_date.getDate();
