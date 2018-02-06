@@ -4,7 +4,6 @@ var select_units = [];
 $(function () {
     load_hp_member();
     load_unit_member();
-    load_unit();
 
     $('#search-hp').find('input[name="status"]:radio').change(function () {
         if ($(this).val() === 'active') {
@@ -33,6 +32,7 @@ $(function () {
         load_unit_member();
     });
 
+    // ソート順
     var table_hp = $("#list-hp").stupidtable();
     table_hp.bind('aftertablesort', function (event, data) {
         // data.column - the index of the column sorted after a click
@@ -51,13 +51,31 @@ $(function () {
 
 });
 
-function load_unit() {
+/**
+ * 対象のユニットカテゴリからユニットグループを取得
+ *
+ * @param categories
+ * @returns {Array}
+ */
+function get_unit_group(categories) {
     var units = [];
-    $.getJSON("./js/unit.json", function(data) {
+    $.ajaxSetup({async: false}); // 同期通信(json取ってくるまで待つ)
+    $.getJSON("./js/unit.json", function (data) {
         $(data.unit).each(function () {
+
+            if (categories.indexOf(this.name) >= 0) {
+                if (typeof this.group === "undefined") {
+                    units.push(this.name);
+                } else {
+                    Array.prototype.push.apply(units, this.group);
+                }
+            }
 
         })
     });
+    $.ajaxSetup({async: true}); // 非同期に戻す
+
+    return units;
 }
 
 /**
@@ -167,6 +185,8 @@ function load_unit_member() {
 
     var today = new Date();
 
+    var select_unit_groups = get_unit_group(select_units);
+
     var column_number_name = 0;
     var column_number_unit = 1;
     var column_number_unit_join_date = 2;
@@ -189,13 +209,49 @@ function load_unit_member() {
             if (typeof this.unit_graduate_date !== "undefined" && typeof this.concurrent_graduate_date !== "undefined" && is_unit_active_only === true) {
                 return true;
             }
+            // 検索
             var unit_skip = false;
+            var concurrent_skip = false;
+            // 現役のみ
             if (typeof this.unit_graduate_date !== "undefined" && is_unit_active_only === true) {
                 unit_skip = true;
             }
-            var concurrent_skip = false;
             if (typeof this.concurrent_graduate_date !== "undefined" && is_unit_active_only === true) {
                 concurrent_skip = true;
+            }
+            // ユニット絞込
+            if (select_unit_groups.length !== 0) {
+                if (typeof this.unit === "object") {
+                    var search_unit = false;
+                    for (var cnt1 = 0; cnt1 < this.unit.length; cnt1++) {
+                        if (select_unit_groups.indexOf(this.unit[cnt1]) >= 0) {
+                            search_unit = true;
+                        }
+                    }
+                    if (search_unit === false) {
+                        unit_skip = true;
+                    }
+                } else if (typeof this.unit !== "undefined") {
+                    if (select_unit_groups.indexOf(this.unit) === -1) {
+                        unit_skip = true;
+                    }
+                }
+
+                if (typeof this.concurrent_unit === "object") {
+                    var search_concurrent = false;
+                    for (var cnt2 = 0; cnt2 < this.concurrent_unit.length; cnt2++) {
+                        if (select_unit_groups.indexOf(this.concurrent_unit[cnt2]) >= 0) {
+                            search_concurrent = true;
+                        }
+                    }
+                    if (search_concurrent === false) {
+                        concurrent_skip = true;
+                    }
+                } else if (typeof this.concurrent_unit !== "undefined") {
+                    if (select_unit_groups.indexOf(this.concurrent_unit) === -1) {
+                        concurrent_skip = true;
+                    }
+                }
             }
 
             // 表示用配列作成
@@ -317,9 +373,9 @@ function load_unit_member() {
                     list.find("#member-unit" + count).addClass('bg-success');
                 }
 
-                for (var cnt2 = 0; cnt2 < unit_member.length; cnt2++) {
-                    if (typeof unit_member[cnt2] !== "undefined") {
-                        list.find("#member-unit" + count).append("<td>" + unit_member[cnt2] + "</td>");
+                for (var cnt3 = 0; cnt3 < unit_member.length; cnt3++) {
+                    if (typeof unit_member[cnt3] !== "undefined") {
+                        list.find("#member-unit" + count).append("<td>" + unit_member[cnt3] + "</td>");
                     } else {
                         list.find("#member-unit" + count).append("<td></td>");
                     }
@@ -332,9 +388,9 @@ function load_unit_member() {
                     list.find("#member-concurrent" + count).addClass('bg-success');
                 }
 
-                for (var cnt3 = 0; cnt3 < concurrent_unit_member.length; cnt3++) {
-                    if (typeof concurrent_unit_member[cnt3] !== "undefined") {
-                        list.find("#member-concurrent" + count).append("<td>" + concurrent_unit_member[cnt3] + "</td>");
+                for (var cnt4 = 0; cnt4 < concurrent_unit_member.length; cnt4++) {
+                    if (typeof concurrent_unit_member[cnt4] !== "undefined") {
+                        list.find("#member-concurrent" + count).append("<td>" + concurrent_unit_member[cnt4] + "</td>");
                     } else {
                         list.find("#member-concurrent" + count).append("<td></td>");
                     }
