@@ -32,8 +32,11 @@ $(function () {
         load_unit_member();
     });
 
+    var table_hp = $("#list-hp");
+    var table_unit = $("#list-unit");
+
     // ソート順
-    var table_hp = $("#list-hp").stupidtable();
+    table_hp.stupidtable();
     table_hp.bind('aftertablesort', function (event, data) {
         // data.column - the index of the column sorted after a click
         // data.direction - the sorting direction (either asc or desc)
@@ -41,14 +44,13 @@ $(function () {
         // $(this) - this table object
     });
 
-    var table_unit = $("#list-unit").stupidtable();
+    table_unit.stupidtable();
     table_unit.bind('aftertablesort', function (event, data) {
         // data.column - the index of the column sorted after a click
         // data.direction - the sorting direction (either asc or desc)
         // data.$th - the th element (in jQuery wrapper)
         // $(this) - this table object
     });
-
 });
 
 /**

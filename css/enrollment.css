@@ -1,0 +1,13 @@
+.member_name {
+    width: 200px;
+}
+
+.birth_date, #join_date, #graduate_date, #unit_join_date, #unit_graduate_date {
+    width: 100px;
+}
+.age, #join_age, #graduate_age, #unit_join_age, #unit_graduate_age {
+    width: 60px;
+}
+#unit {
+    width: 200px;
+}

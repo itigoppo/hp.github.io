@@ -1,0 +1,116 @@
+---
+title: Theadfix
+---
+
+<h1>
+  <%= current_page.data.title || data.config.title%>
+  <small>(jQuery Plugin)</small>
+</h1>
+
+テーブルの`thead`要素を固定してくれるjQueryプラグインです。
+jsを書かなくてもデータ属性を指定するだけで機能します。
+
+---
+
+## 使い方
+
+`thead`要素をウィンドウに対して`fixed`で固定したい場合には`data-theadfix="window"`を、親要素に対して`absolute`で固定したい場合には`data-theadfix="parent"`をそれぞれ指定します。
+デフォルトは`window`になっているので、`data-theadfix`と省略して指定する事も可能です。
+
+<div class="example">
+  <%= partial 'example' %>
+</div>
+
+<script type="text/javascript">
+$(document).on('ready', function() {
+  $('[data-theadfix]').on('fix.theadfix', function(event) {
+    console.log('fix.theadfix: ', event.target);
+  });
+  $('[data-theadfix]').on('release.theadfix', function(event) {
+    console.log('release.theadfix: ', event.target);
+  });
+});
+</script>
+
+``` html
+<table data-theadfix>
+  <thead>...</thead>
+  <tbody>...</tbody>
+</table>
+
+<table data-theadfix="parent">
+  <thead>...</thead>
+  <tbody>...</tbody>
+</table>
+```
+
+---
+
+## メソッド
+
+デフォルトではロード時に`data-theadfix`属性が設定されている要素を対象に初期化していますが、
+`$().theadfix(options)`を使用する事で個別に要素を初期化する事が可能です。
+
+```js
+$('[data-theadfix]').theadfix(options);
+```
+
+<table class="table table-bordered">
+  <tbody>
+   <tr>
+     <td>$().theadfix(options)</td>
+     <td>初期化</td>
+   </tr>
+  </tbody>
+</table>
+
+---
+
+## オプション
+
+初期化時にオプションで値を渡すと一部の設定を変更する事が可能です。
+htmlにデータ属性を指定して初期化する場合には`data-*`を追加する事でも設定が変更できます。
+
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <td>theadfix</td>
+      <td>window</td>
+      <td>theadをウィンドウに対して固定するか親要素に対して固定するかの指定。デフォルトはwindowになっていて、ウィンドウ上部にfixedで固定されます。
+      親要素をターゲットにabsoluteで固定したい場合にはparentを指定します。</td>
+    </tr>
+    <tr>
+      <td>wait</td>
+      <td>100</td>
+      <td>スクロールイベントを間引く時間。ms単位で指定する事ができ、その時間内は同じスクロールイベントが発生しないようになっています。</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## イベント
+
+theadの挙動が変わる際のイベントを取得する事も可能です。
+
+<table class="table table-bordered">
+  <tbody>
+   <tr>
+     <td>fix.theadfix</td>
+     <td>theadが固定されたタイミングで発生するイベントです</td>
+   </tr>
+   <tr>
+     <td>release.theadfix</td>
+     <td>theadが固定を解除されたタイミングで発生するイベントです</td>
+   </tr>
+  </tbody>
+</table>
+
+``` javascript
+$('#target').on('fix.theadfix', function (event) {
+  console.log('fix.theadfix: ', event.target);
+});
+$('#target').on('release.theadfix', function (event) {
+  console.log('release.theadfix: ', event.target);
+});
+```

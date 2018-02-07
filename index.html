@@ -21,20 +21,13 @@
             crossorigin="anonymous"></script>
     <script src="./bootstrap-4.0.0-beta.3-dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="./js/stupidtable.min.js" crossorigin="anonymous"></script>
+    <script src="./jquery-theadfix/javascripts/jquery.theadfix.js" crossorigin="anonymous"></script>
     <script src="./js/enrollment.js" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="./css/enrollment.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>ハロプロ在籍日数一覧</title>
-
-    <style>
-        .member_name {
-            width: 200px;
-        }
-        #unit {
-            width: 200px;
-        }
-    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -75,7 +68,7 @@
                 </div>
             </div>
 
-            <table id="list-hp" class="table table-light table-bordered table-striped table-sm table-responsive-sm">
+            <table id="list-hp" class="table table-light table-bordered table-striped table-sm table-responsive-sm" data-theadfix>
                 <colgroup span="1" class="member_name">
                 <colgroup span="1" class="birth_date">
                 <colgroup span="1" class="age">
@@ -271,7 +264,7 @@
                 </div>
             </div>
 
-            <table id="list-unit" class="table table-light table-bordered table-striped table-sm table-responsive-sm">
+            <table id="list-unit" class="table table-light table-bordered table-striped table-sm table-responsive-sm" data-theadfix>
                 <colgroup span="1" class="member_name">
                 <colgroup span="1" id="unit">
                 <colgroup span="1" id="unit_join_date">

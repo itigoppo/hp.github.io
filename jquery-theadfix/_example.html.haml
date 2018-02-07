@@ -1,0 +1,43 @@
+.row
+  .col-xs-6
+
+    %table.table.table-stripe{data: {theadfix: ''}}
+      %thead
+        %tr
+          %th
+            id
+          %th
+            name
+          %th
+            kana
+      %tbody
+        - data.address.list.each_with_index do |i, index|
+          %tr
+            %td
+              = index
+            %td
+              = i[0]
+            %td
+              = i[1]
+
+  .col-xs-6
+
+    .example-wrapper
+      %table.table.table-stripe{data: {theadfix: 'parent'}}
+        %thead
+          %tr
+            %th
+              id
+            %th
+              name
+            %th
+              kana
+        %tbody
+          - data.address.list.each_with_index do |i, index|
+            %tr
+              %td
+                = index
+              %td
+                = i[0]
+              %td
+                = i[1]
