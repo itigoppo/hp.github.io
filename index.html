@@ -66,6 +66,12 @@
                         現役のみにする
                     </label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="status" id="hp_status_graduation" value="graduation">
+                        卒業生のみにする
+                    </label>
+                </div>
             </div>
 
             <table id="list-hp" class="table table-light table-bordered table-striped table-sm table-responsive-sm" data-theadfix>
@@ -135,6 +141,12 @@
                         <label class="form-check-label">
                             <input class="form-check-input" type="radio" name="status" id="unit_status_active" value="active">
                             現役のみにする
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="status" id="unit_status_graduation" value="graduation">
+                            卒業生のみにする
                         </label>
                     </div>
                 </div>
@@ -269,8 +281,11 @@
                 <colgroup span="1" id="unit">
                 <colgroup span="1" id="unit_join_date">
                 <colgroup span="1" id="unit_join_age">
+                <colgroup span="1" id="unit_graduate_announcement_date">
+                <colgroup span="1" id="unit_graduate_between_announcement">
                 <colgroup span="1" id="unit_graduate_date">
                 <colgroup span="1" id="unit_graduate_age">
+                <colgroup span="1" id="unit_graduate_hall">
                 <colgroup span="1" id="unit_enrollment">
                 <colgroup span="1" id="unit_enrollment_day">
 
@@ -288,11 +303,22 @@
                     </th>
                     <th class="bg-danger" data-sort="string">
                         <i class="fas fa-sort"></i>
+                        卒業発表日
+                    </th>
+                    <th class="bg-danger" data-sort="int">
+                        <i class="fas fa-sort"></i>
+                        発表から卒業まで
+                    </th>
+                    <th class="bg-danger" data-sort="string">
+                        <i class="fas fa-sort"></i>
                         卒業日
                     </th>
                     <th class="bg-danger" data-sort="int">
                         <i class="fas fa-sort"></i>
                         年齢
+                    </th>
+                    <th class="bg-danger">
+                        卒業場所
                     </th>
                     <th class="bg-danger">
                         在籍期間
