@@ -136,7 +136,7 @@ function load_hp_member() {
             var join_date = today;
             if (this.join_date.indexOf('dd') !== -1) {
                 var join_day_unknown = this.join_date.split('/');
-                join_date = new Date(Number(join_day_unknown[0]), Number(join_day_unknown[1]) + 1, 0);
+                join_date = new Date(Number(join_day_unknown[0]), Number(join_day_unknown[1]), 0);
             } else {
                 join_date = new Date(this.join_date);
             }
@@ -145,7 +145,7 @@ function load_hp_member() {
             if (typeof this.graduate_date !== "undefined") {
                 if (this.graduate_date.indexOf('dd') !== -1) {
                     var graduate_day_unknown = this.graduate_date.split('/');
-                    graduate_date = new Date(Number(graduate_day_unknown[0]), Number(graduate_day_unknown[1]) + 1, 0);
+                    graduate_date = new Date(Number(graduate_day_unknown[0]), Number(graduate_day_unknown[1]), 0);
                 } else {
                     graduate_date = new Date(this.graduate_date);
                 }
@@ -316,7 +316,7 @@ function load_unit_member() {
             if (typeof this.unit_join_date !== "undefined") {
                 if (this.unit_join_date.indexOf('dd') !== -1) {
                     var unit_join_day_unknown = this.unit_join_date.split('/');
-                    unit_join_date = new Date(Number(unit_join_day_unknown[0]), Number(unit_join_day_unknown[1]) + 1, 0);
+                    unit_join_date = new Date(Number(unit_join_day_unknown[0]), Number(unit_join_day_unknown[1]), 0);
                 } else {
                     unit_join_date = new Date(this.unit_join_date);
                 }
@@ -326,7 +326,7 @@ function load_unit_member() {
             if (typeof this.unit_graduate_date !== "undefined") {
                 if (this.unit_graduate_date.indexOf('dd') !== -1) {
                     var unit_graduate_day_unknown = this.unit_graduate_date.split('/');
-                    unit_graduate_date = new Date(Number(unit_graduate_day_unknown[0]), Number(unit_graduate_day_unknown[1]) + 1, 0);
+                    unit_graduate_date = new Date(Number(unit_graduate_day_unknown[0]), Number(unit_graduate_day_unknown[1]), 0);
                 } else {
                     unit_graduate_date = new Date(this.unit_graduate_date);
                 }
@@ -336,7 +336,7 @@ function load_unit_member() {
             if (typeof this.unit_graduate_announcement_date !== "undefined") {
                 if (this.unit_graduate_announcement_date.indexOf('dd') !== -1) {
                     var unit_graduate_announcement_day_unknown = this.unit_graduate_announcement_date.split('/');
-                    unit_graduate_announcement_date = new Date(Number(unit_graduate_announcement_day_unknown[0]), Number(unit_graduate_announcement_day_unknown[1]) + 1, 0);
+                    unit_graduate_announcement_date = new Date(Number(unit_graduate_announcement_day_unknown[0]), Number(unit_graduate_announcement_day_unknown[1]), 0);
                 } else {
                     unit_graduate_announcement_date = new Date(this.unit_graduate_announcement_date);
                 }
@@ -346,7 +346,7 @@ function load_unit_member() {
             if (typeof this.concurrent_join_date !== "undefined") {
                 if (this.concurrent_join_date.indexOf('dd') !== -1) {
                     var concurrent_join_day_unknown = this.concurrent_join_date.split('/');
-                    concurrent_join_date = new Date(Number(concurrent_join_day_unknown[0]), Number(concurrent_join_day_unknown[1]) + 1, 0);
+                    concurrent_join_date = new Date(Number(concurrent_join_day_unknown[0]), Number(concurrent_join_day_unknown[1]), 0);
                 } else {
                     concurrent_join_date = new Date(this.concurrent_join_date);
                 }
@@ -356,7 +356,7 @@ function load_unit_member() {
             if (typeof this.concurrent_graduate_date !== "undefined") {
                 if (this.concurrent_graduate_date.indexOf('dd') !== -1) {
                     var concurrent_graduate_day_unknown = this.concurrent_graduate_date.split('/');
-                    concurrent_graduate_date = new Date(Number(concurrent_graduate_day_unknown[0]), Number(concurrent_graduate_day_unknown[1]) + 1, 0);
+                    concurrent_graduate_date = new Date(Number(concurrent_graduate_day_unknown[0]), Number(concurrent_graduate_day_unknown[1]), 0);
                 } else {
                     concurrent_graduate_date = new Date(this.concurrent_graduate_date);
                 }
@@ -366,7 +366,7 @@ function load_unit_member() {
             if (typeof this.concurrent_graduate_announcement_date !== "undefined") {
                 if (this.concurrent_graduate_announcement_date.indexOf('dd') !== -1) {
                     var concurrent_graduate_announcement_day_unknown = this.concurrent_graduate_announcement_date.split('/');
-                    concurrent_graduate_announcement_date = new Date(Number(concurrent_graduate_announcement_day_unknown[0]), Number(concurrent_graduate_announcement_day_unknown[1]) + 1, 0);
+                    concurrent_graduate_announcement_date = new Date(Number(concurrent_graduate_announcement_day_unknown[0]), Number(concurrent_graduate_announcement_day_unknown[1]), 0);
                 } else {
                     concurrent_graduate_announcement_date = new Date(this.concurrent_graduate_announcement_date);
                 }
