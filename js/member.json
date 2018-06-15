@@ -1430,7 +1430,9 @@
       "unit_join_date": "2014/11/05",
       "unit_graduate_date": "2016/08/04",
       "unit_graduate_announcement_date": "2016/08/04",
-      "unit_graduate_hall": "卒業公演無し"
+      "unit_graduate_hall": "卒業公演無し",
+      "concurrent_unit": "Juice=Juice",
+      "concurrent_join_date": "2018/06/13"
     },
     {
       "member_name": "山木梨沙",
