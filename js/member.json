@@ -795,7 +795,8 @@
         "スマイレージ",
         "アンジュルム"
       ],
-      "unit_join_date": "2009/04/04"
+      "unit_join_date": "2009/04/04",
+      "unit_graduate_announcement_date": "2018/04/05",
     },
     {
       "member_name": "前田憂佳",
@@ -963,6 +964,7 @@
       "member_name": "光井愛佳",
       "birth_date": "1993/01/12",
       "join_date": "2006/12/10",
+      "graduate_date": "2018/11/03",
       "unit": "モーニング娘。",
       "unit_join_date": "2006/12/10",
       "unit_graduate_date": "2012/05/18",
@@ -1276,7 +1278,10 @@
         "モーニング娘。'17",
         "モーニング娘。'18"
       ],
-      "unit_join_date": "2011/09/29"
+      "unit_join_date": "2011/09/29",
+      "unit_graduate_date": "2018/12/16",
+      "unit_graduate_announcement_date": "2018/08/17",
+      "unit_graduate_hall": "日本武道館"
     },
     {
       "member_name": "石田亜佑美",
@@ -1606,8 +1611,10 @@
       "join_date": "2015/04/01",
       "unit": "カントリー・ガールズ",
       "unit_join_date": "2015/11/05",
+      "unit_graduate_announcement_date": "2018/11/02",
       "concurrent_unit": "Juice=Juice",
       "concurrent_join_date": "2017/06/26"
+      "concurrent_unit_graduate_announcement_date": "2018/11/02",
     },
     {
       "member_name": "秋山眞緒",
