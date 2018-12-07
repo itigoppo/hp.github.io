@@ -1612,12 +1612,14 @@
       "join_date": "2015/04/01",
       "unit": "カントリー・ガールズ",
       "unit_join_date": "2015/11/05",
-      "unit_graduate_date": "2019/03/dd",
+      "unit_graduate_date": "2019/03/11",
       "unit_graduate_announcement_date": "2018/11/02",
+      "unit_graduate_hall": "Zepp Tokyo",
       "concurrent_unit": "Juice=Juice",
       "concurrent_join_date": "2017/06/26",
-      "concurrent_unit_graduate_date": "2019/03/dd",
-      "concurrent_unit_graduate_announcement_date": "2018/11/02"
+      "concurrent_unit_graduate_date": "2019/03/11",
+      "concurrent_unit_graduate_announcement_date": "2018/11/02",
+      "concurrent_unit_graduate_hall": "Zepp Tokyo"
     },
     {
       "member_name": "秋山眞緒",
