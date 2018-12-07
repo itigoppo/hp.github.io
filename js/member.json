@@ -1618,9 +1618,9 @@
       "unit_graduate_hall": "Zepp Tokyo",
       "concurrent_unit": "Juice=Juice",
       "concurrent_join_date": "2017/06/26",
-      "concurrent_unit_graduate_date": "2019/03/11",
-      "concurrent_unit_graduate_announcement_date": "2018/11/02",
-      "concurrent_unit_graduate_hall": "Zepp Tokyo"
+      "concurrent_graduate_date": "2019/03/11",
+      "concurrent_graduate_announcement_date": "2018/11/02",
+      "concurrent_graduate_hall": "Zepp Tokyo"
     },
     {
       "member_name": "秋山眞緒",
