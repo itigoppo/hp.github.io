@@ -1244,11 +1244,15 @@
       "member_name": "中西香菜",
       "birth_date": "1997/06/04",
       "join_date": "2011/08/14",
+      "graduate_date": "2019/12/10",
       "unit": [
         "スマイレージ",
         "アンジュルム"
       ],
-      "unit_join_date": "2011/08/14"
+      "unit_join_date": "2011/08/14",
+      "unit_graduate_date": "2019/12/10",
+      "unit_graduate_announcement_date": "2019/09/30",
+      "unit_graduate_hall": "豊洲PIT"
     },
     {
       "member_name": "小数賀芙由香",
