@@ -1211,8 +1211,12 @@
       "member_name": "浜浦彩乃",
       "birth_date": "2000/04/26",
       "join_date": "2011/02/dd",
+      "graduate_date": "2020/03/30",
       "unit": "こぶしファクトリー",
-      "unit_join_date": "2015/01/02"
+      "unit_join_date": "2015/01/02",
+      "unit_graduate_date": "2020/03/30",
+      "unit_graduate_announcement_date": "2020/01/08",
+      "unit_graduate_hall": "東京ドームシティホール"
     },
     {
       "member_name": "田口夏実",
@@ -1221,7 +1225,8 @@
       "graduate_date": "2017/12/06",
       "unit": "こぶしファクトリー",
       "unit_join_date": "2015/01/02",
-      "unit_graduate_date": "2017/12/06"
+      "unit_graduate_date": "2017/12/06",
+      "unit_graduate_hall": "卒業公演無し"
     },
     {
       "member_name": "小川麗奈",
@@ -1230,7 +1235,8 @@
       "graduate_date": "2017/09/06",
       "unit": "こぶしファクトリー",
       "unit_join_date": "2015/01/02",
-      "unit_graduate_date": "2017/09/06"
+      "unit_graduate_date": "2017/09/06",
+      "unit_graduate_hall": "卒業公演無し"
     },
     {
       "member_name": "大塚愛菜",
@@ -1239,7 +1245,8 @@
       "graduate_date": "2013/07/05",
       "unit": "Juice=Juice",
       "unit_join_date": "2013/02/03",
-      "unit_graduate_date": "2013/07/05"
+      "unit_graduate_date": "2013/07/05",
+      "unit_graduate_hall": "卒業公演無し"
     },
     {
       "member_name": "中西香菜",
@@ -1364,8 +1371,12 @@
       "member_name": "野村みな美",
       "birth_date": "2000/02/10",
       "join_date": "2012/06/17",
+      "graduate_date": "2020/03/30",
       "unit": "こぶしファクトリー",
-      "unit_join_date": "2015/01/02"
+      "unit_join_date": "2015/01/02",
+      "unit_graduate_date": "2020/03/30",
+      "unit_graduate_announcement_date": "2020/01/08",
+      "unit_graduate_hall": "東京ドームシティホール"
     },
     {
       "member_name": "山岸理子",
@@ -1396,8 +1407,12 @@
       "member_name": "和田桜子",
       "birth_date": "2001/03/08",
       "join_date": "2012/11/dd",
+      "graduate_date": "2020/03/30",
       "unit": "こぶしファクトリー",
-      "unit_join_date": "2015/01/02"
+      "unit_join_date": "2015/01/02",
+      "unit_graduate_date": "2020/03/30",
+      "unit_graduate_announcement_date": "2020/01/08",
+      "unit_graduate_hall": "東京ドームシティホール"
     },
     {
       "member_name": "岸本ゆめの",
@@ -1449,7 +1464,8 @@
       "graduate_date": "2017/07/06",
       "unit": "こぶしファクトリー",
       "unit_join_date": "2015/01/02",
-      "unit_graduate_date": "2017/07/06"
+      "unit_graduate_date": "2017/07/06",
+      "unit_graduate_hall": "卒業公演無し"
     },
     {
       "member_name": "稲場愛香",
@@ -1622,8 +1638,12 @@
       "member_name": "広瀬彩海",
       "birth_date": "1999/08/04",
       "join_date": "2014/11/dd",
+      "graduate_date": "2020/03/30",
       "unit": "こぶしファクトリー",
-      "unit_join_date": "2015/01/02"
+      "unit_join_date": "2015/01/02",
+      "unit_graduate_date": "2020/03/30",
+      "unit_graduate_announcement_date": "2020/01/08",
+      "unit_graduate_hall": "東京ドームシティホール"
     },
     {
       "member_name": "谷本安美",
@@ -1637,7 +1657,10 @@
       "birth_date": "2001/07/17",
       "join_date": "2014/11/dd",
       "unit": "こぶしファクトリー",
-      "unit_join_date": "2015/01/02"
+      "unit_join_date": "2015/01/02",
+      "unit_graduate_date": "2020/03/30",
+      "unit_graduate_announcement_date": "2020/01/08",
+      "unit_graduate_hall": "東京ドームシティホール"
     },
     {
       "member_name": "小野瑞穂",
