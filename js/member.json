@@ -1089,8 +1089,10 @@
       "member_name": "宮本佳林",
       "birth_date": "1998/12/01",
       "join_date": "2008/11/dd",
+      "graduate_date": "2020/06/dd",
       "unit": "Juice=Juice",
-      "unit_join_date": "2013/02/03"
+      "unit_join_date": "2013/02/03",
+      "unit_graduate_date": "2020/06/dd"
     },
     {
       "member_name": "フランシス",
