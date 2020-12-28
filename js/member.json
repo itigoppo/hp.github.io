@@ -1089,10 +1089,12 @@
       "member_name": "宮本佳林",
       "birth_date": "1998/12/01",
       "join_date": "2008/11/dd",
-      "graduate_date": "2020/06/dd",
+      "graduate_date": "2020/12/10",
       "unit": "Juice=Juice",
       "unit_join_date": "2013/02/03",
-      "unit_graduate_date": "2020/06/dd"
+      "unit_graduate_date": "2020/12/10",
+      "unit_graduate_announcement_date": "2020/02/10",
+      "unit_graduate_hall": "日本武道館"
     },
     {
       "member_name": "フランシス",
@@ -1536,7 +1538,7 @@
       "member_name": "船木結",
       "birth_date": "2002/05/10",
       "join_date": "2013/09/22",
-      "graduate_date": "2020/06/12",
+      "graduate_date": "2020/12/09",
       "unit": "カントリー・ガールズ",
       "unit_join_date": "2015/11/05",
       "unit_graduate_date": "2019/12/26",
@@ -1544,9 +1546,9 @@
       "unit_graduate_hall": "LINE CUBE SHIBUYA",
       "concurrent_unit": "アンジュルム",
       "concurrent_join_date": "2017/06/26",
-      "concurrent_graduate_date": "2020/06/12",
+      "concurrent_graduate_date": "2020/12/09",
       "concurrent_graduate_announcement_date": "2019/10/18",
-      "concurrent_graduate_hall": "ぴあアリーナMM"
+      "concurrent_graduate_hall": "日本武道館"
     },
     {
       "member_name": "相川茉穂",
@@ -1840,10 +1842,14 @@
       "member_name": "太田遥香",
       "birth_date": "2003/10/21",
       "join_date": "2016/07/30",
+      "graduate_date": "2020/10/13",
       "unit": [
         "アンジュルム"
       ],
-      "unit_join_date": "2018/11/23"
+      "unit_join_date": "2018/11/23",
+      "unit_graduate_date": "2020/10/13",
+      "unit_graduate_announcement_date": "2020/10/13",
+      "unit_graduate_hall": "卒業公演無し"
     },
     {
       "member_name": "伊勢鈴蘭",
@@ -1940,6 +1946,33 @@
         "アンジュルム"
       ],
       "unit_join_date": "2019/07/03"
+    },
+    {
+      "member_name": "川名凛",
+      "birth_date": "2003/12/06",
+      "join_date": "2020/12/09",
+      "unit": [
+        "アンジュルム"
+      ],
+      "unit_join_date": "2020/12/09"
+    },
+    {
+      "member_name": "為永幸音",
+      "birth_date": "2004/02/09",
+      "join_date": "2017/12/10",
+      "unit": [
+        "アンジュルム"
+      ],
+      "unit_join_date": "2020/12/09"
+    },
+    {
+      "member_name": "松本わかな",
+      "birth_date": "2007/09/01",
+      "join_date": "2020/12/09",
+      "unit": [
+        "アンジュルム"
+      ],
+      "unit_join_date": "2020/12/09"
     }
   ]
 }
