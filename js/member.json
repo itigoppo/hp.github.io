@@ -1706,7 +1706,9 @@
       "unit_join_date": "2015/01/02",
       "unit_graduate_date": "2020/03/30",
       "unit_graduate_announcement_date": "2020/01/08",
-      "unit_graduate_hall": "東京ドームシティホール"
+      "unit_graduate_hall": "東京ドームシティホール",
+      "concurrent_unit": "Juice=Juice",
+      "concurrent_join_date": "2020/04/01"
     },
     {
       "member_name": "小野瑞穂",
