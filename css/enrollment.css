@@ -1,16 +1,20 @@
-.member_name {
-    width: 200px;
+table#list-hp thead th {
+  /* 縦スクロール時に固定する */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* tbody内のセルより手前に表示する */
+  z-index: 1;
 }
 
-.birth_date, #join_date, #graduate_date, #unit_join_date, #unit_graduate_date, #unit_graduate_announcement_date {
-    width: 100px;
+table#list-hp th:first-child {
+  /* 横スクロール時に固定する */
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
 }
-.age, #join_age, #graduate_age, #unit_join_age, #unit_graduate_age {
-    width: 60px;
-}
-#unit {
-    width: 180px;
-}
-#unit_graduate_between_announcement {
-    width: 60px;
+
+table#list-hp thead th:first-child {
+  /* ヘッダー行内の他のセルより手前に表示する */
+  z-index: 2;
 }

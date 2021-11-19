@@ -1,6 +1,7 @@
 {
-  "unit": [
+  "units": [
     {
+      "key": "morning",
       "name": "モーニング娘。",
       "group": [
         "モーニング娘。",
@@ -15,6 +16,7 @@
       ]
     },
     {
+      "key": "taiyo",
       "name": "T&Cボンバー",
       "group": [
         "太陽とシスコムーン",
@@ -22,6 +24,7 @@
       ]
     },
     {
+      "key": "country",
       "name": "カントリー・ガールズ",
       "group": [
         "カントリー娘。",
@@ -29,6 +32,7 @@
       ]
     },
     {
+      "key": "coconut",
       "name": "ココナッツ娘。",
       "group": [
         "ココナッツ娘",
@@ -36,21 +40,27 @@
       ]
     },
     {
+      "key": "melon",
       "name": "メロン記念日"
     },
     {
+      "key": "sheki",
       "name": "シェキドル"
     },
     {
+      "key": "biyuden",
       "name": "美勇伝"
     },
     {
+      "key": "berryz",
       "name": "Berryz工房"
     },
     {
+      "key": "cute",
       "name": "℃-ute"
     },
     {
+      "key": "possible",
       "name": "チャオ ベッラ チンクエッティ",
       "group": [
         "THE ポッシボー",
@@ -58,21 +68,27 @@
       ]
     },
     {
+      "key": "gatas",
       "name": "音楽ガッタス"
     },
     {
+      "key": "milky",
       "name": "MilkyWay"
     },
     {
+      "key": "sina",
       "name": "SI☆NA"
     },
     {
+      "key": "shugochara",
       "name": "しゅごキャラエッグ！"
     },
     {
+      "key": "ice",
       "name": "アイスクリー娘。"
     },
     {
+      "key": "fanda",
       "name": "大小姐",
       "group": [
         "フランシス&愛子",
@@ -80,6 +96,7 @@
       ]
     },
     {
+      "key": "smileage",
       "name": "アンジュルム",
       "group": [
         "S/mileage",
@@ -88,27 +105,35 @@
       ]
     },
     {
+      "key": "juice",
       "name": "Juice=Juice"
     },
     {
+      "key": "fagnolia",
       "name": "こぶしファクトリー"
     },
     {
+      "key": "camellia",
       "name": "つばきファクトリー"
     },
     {
+      "key": "beyooooonds",
       "name": "BEYOOOOONDS"
     },
     {
+      "key": "chica",
       "name": "CHICA#TETSU"
     },
     {
+      "key": "rfeo",
       "name": "雨ノ森 川海"
     },
     {
+      "key": "seasonings",
       "name": "SeasoningS"
     },
     {
+      "key": "trainee",
       "name": "研修生新ユニット"
     }
   ]
