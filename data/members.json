@@ -2076,7 +2076,7 @@
       "birth_date": "2004-04-30",
       "join_date": "2016-01-15",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-03-07"
     },
@@ -2085,7 +2085,7 @@
       "birth_date": "2004-04-20",
       "join_date": "2016-07-30",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-03-07"
     },
@@ -2094,7 +2094,7 @@
       "birth_date": "2004-07-23",
       "join_date": "2017-12-10",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-03-07"
     },
@@ -2103,7 +2103,7 @@
       "birth_date": "2002-10-28",
       "join_date": "2018-11-01",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-03-07"
     },
@@ -2112,7 +2112,7 @@
       "birth_date": "2005-07-20",
       "join_date": "2017-03-06",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-07-06"
     },
@@ -2121,7 +2121,7 @@
       "birth_date": "2003-06-18",
       "join_date": "2019-08-02",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-07-06"
     },
@@ -2130,7 +2130,7 @@
       "birth_date": "2006-04-17",
       "join_date": "2019-08-02",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-07-06"
     },
@@ -2139,9 +2139,27 @@
       "birth_date": "2006-08-30",
       "join_date": "2019-08-02",
       "unit": [
-        "研修生新ユニット"
+        "OCHA NORMA"
       ],
       "unit_join_date": "2021-07-06"
+    },
+    {
+      "member_name": "筒井澪心",
+      "birth_date": "2007-dd-dd",
+      "join_date": "2021-12-12",
+      "unit": [
+        "OCHA NORMA"
+      ],
+      "unit_join_date": "2021-12-12"
+    },
+    {
+      "member_name": "田代すみれ",
+      "birth_date": "2005-dd-dd",
+      "join_date": "2021-12-12",
+      "unit": [
+        "OCHA NORMA"
+      ],
+      "unit_join_date": "2021-12-12"
     }
   ]
 }
